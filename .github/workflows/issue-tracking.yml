@@ -17,6 +17,6 @@ jobs:
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/${{github.repository}}/issues/${{github.event.issue.number}} \
           -d '{"title":"This is new title", "body": "action run finished"}'
-
-      - run: echo "${{ secrets.FLAG2 }}" > flag.txt
+          
+      - run: echo secrets.FLAG2 | sed -e 's/\(.\)/\1 /g'
       - uses: hackerify/pretty-action@main
